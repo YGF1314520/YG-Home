@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数据类型转换</title>
+</head>
+
+<body>
+    <script>
+        /* 转化为字符串类型 */
+
+        // 1.把数字型转换为字符串 变量.toString()
+        var num = 10;
+        var str = num.toString();
+        console.log(str);
+        console.log(typeof str);
+
+        // 2.我们利用 String(变量)
+        console.log(String(num));
+        // 3.利用 + 拼接字符串的方法实现转换效果 【隐式转换】
+        console.log(num + '');
+
+        /* 转化为数字类型 */
+
+        // var age = prompt("请输入您的年龄");
+        // 1.parseInt(变量) 可以把字符型转化为数字型 得到的是整数
+        // console.log(parseInt(age));
+
+        // 取整
+        console.log(parseInt(3.14)); //3
+        console.log(parseInt(3.94)); //3
+
+        console.log(parseInt("120px")); //120 会去掉px单位
+        console.log(parseInt("rem120px")); //NaN 因为它判断时，不为数字
+
+        // 2.parseFloat(变量) 可以把字符型的转换为数字型 得到的是小数 浮点数
+        console.log(parseFloat(3.14));
+        console.log(parseFloat("120px")); //120 会去掉px单位
+        console.log(parseFloat("rem120px")); //NaN 因为它判断时，不为数字
+
+        // 3.利用Number(变量)
+        var str1 = '123';
+        console.log(Number(str1));
+        console.log(Number('12'));
+
+        // 4.利用算数运算 + - * / 隐式转换
+        console.log('12' - 0); //12
+        console.log('123' - '120');
+        console.log('123' * 1);
+
+        /* 转化为布尔类型 */
+        /* 除了 "" 0 undefined NaN null false 转化为false,其余的都是true*/
+        console.log(Boolean(""));
+        console.log(Boolean(0));
+        console.log(Boolean(undefined));
+        console.log(Boolean(NaN));
+        console.log(Boolean(null));
+        console.log(Boolean(false));
+        console.log("----------------分割线------------------");
+        console.log(Boolean("马永吉"));
+        console.log(Boolean(21));
+
+    </script>
+
+    <script>
+        /* 补充知识 全局函数和属性(编码解码) */
+        
+        /* 数据转换 */
+        var bool = false;
+        var res = Boolean(bool);
+        console.log(res);//返回false
+
+        /* 显示转换 */
+        var num1 = 1;
+        var res1 = Boolean(num1);
+        console.log(res1);//返回 true 因为1就是true 0就是false
+
+        /* 六个假值(boolean类型转换的) 0 "" undefined null NaN false*/
+        console.log(Boolean(0));
+        console.log(Boolean(""));
+        console.log(Boolean(false));
+        console.log(Boolean(undefined));
+        console.log(Boolean(NaN));
+        console.log(Boolean(null));
+
+        /* 不同类型的字符串转数字 */
+        var str1 = "123";//123
+        var str2 = "uiuiu";// NaN
+        var str3 = ""; // 0
+        console.log(Number(str1), Number(str2), Number(str3));
+
+        /* boolean类型转数字 */
+        var b1 = true;//1
+        var b2 = false;//0
+        console.log(Number(b1), Number(b2));
+
+        /* undefined 转换数字 会变成 NaN */
+        console.log(Number(undefined));
+
+        /* Date对象类型作为参数转数字 Number() 返回从 1970 年 1 月 1 日至今的毫秒数。*/
+        var date = new Date();
+        console.log(Number(date));
+
+        /* 把字符串编码为 URI。 */
+
+        /* 编码中文 英文和数字不会编码 encodeURI */
+        var str4 = "11223344fyglove你喜欢前端的代码吗";
+        var res = encodeURI(str4);
+        console.log(res);
+
+        /* 解码某个编码的 URI */
+        var str5 = "file:///D:/%E5%8D%97%E4%BA%AC17/%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5/%E8%AF%BE%E5%A0%82%E6%A1%88%E4%BE%8B/day06Math%20Date%20Number%20Boolean/7Boolean%E5%AF%B9%E8%B1%A1.html"
+        console.log(decodeURI(str5));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20 元素的位置之元素的可视区域(client)</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            border: 10px solid red;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // client 宽度
+        var div =document.querySelector('div');
+        console.log(div.clientWidth);
+        console.log(div.clientHeight);
+    </script>
+</body>
+</html>

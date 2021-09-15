@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07 原型</title>
+</head>
+<body>
+    <!-- 总结：原型对象：prototype 作用:共享方法 -->
+    <script>
+        // 1.构造函数的问题
+        function Star(uname,age){
+            this.uname = uname;
+            this.age = age;
+            // this.sing = function(){
+            //     console.log("敲代码");
+            // }
+        }
+        Star.prototype.sing = function(){
+            console.log("敲代码");
+        }
+        var cxy = new Star('程序员',22);
+        var cxys = new Star('程序媛',18);
+        console.log(cxy.sing === cxys.sing);
+        // console.dir(Star);
+        cxy.sing();
+        cxys.sing();
+
+        // 2.一般情况下,我们的公共属性定义到构造函数里面,公共的方法我们放到原型对象身上
+
+    </script>
+</body>
+</html>

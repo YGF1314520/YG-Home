@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>获取DOM元素</title>
+</head>
+<body>
+    <div id="timer">2021-7-14</div>
+
+    <ul>
+        <li>中国加油，你好世界</li>
+        <li>中国加油，你好世界</li>
+        <li>中国加油，你好世界</li>
+        <li>中国加油，你好世界</li>
+        <li>中国加油，你好世界</li>
+    </ul>
+    <ol id="ol">
+        <li>马小姐</li>
+        <li>马小姐</li>
+        <li>马小姐</li>
+        <li>马小姐</li>
+        <li>马小姐</li>
+    </ol>
+
+    <div class="box">盒子1</div>
+    <div class="box">盒子2</div>
+    <div id="nav">
+        <ul>
+            <li>首页</li>
+            <li>产品</li>
+        </ul>
+    </div>
+    <script>
+        // 1.因为我们文档页面从上往下加载，所以先得有标签 所以我们的script写在标签的下面
+        // 2.get 获得element元素by 通过 驼峰命名法
+        // 3.参数id 是 大小写敏感的字符串
+        // 4.返回的是一个元素对象
+        var timer = document.getElementById('timer');
+        console.log(timer);
+        console.log(typeof timer);
+        // 5.console.dir 打印我们返回的元素对象 更好的查看里面的属性和方法
+        console.dir(timer);
+    </script>
+
+    <script>
+        //1. 返回的是 获取过来元素对象的集合 以伪数组的形式存储
+        var lis = document.getElementsByTagName('li');
+        console.log(lis);
+        console.log(lis[0]);
+        // 2.我们想要依次打印里面的元素对象我们可以采取遍历的方式
+        for(var i =0;i<lis.length;i++){
+            console.log(lis[i]);
+        }
+        // 3.如果页面中只有一个li 返回的还是伪数组的形式
+        // 4.如果页面中没有这个元素返回的空值伪数组的形式
+
+        // 5.element.getElementsByTagName('标签名'); 父元素必须是指定的单个元素
+        // var ol = document.getElementsByTagName('ol');//[ol]
+        // console.log(ol[0].getElementsByTagName('li'));
+        var ol = document.getElementById('ol');
+        console.log(ol.getElementsByTagName('li'));
+    </script>
+
+    <script>
+        // 1.getElementsByClassName 根据类名获取某些元素的集合
+        var boxs = document.getElementsByClassName('box');
+        console.log(boxs);
+        // 2.querySelector 返回指定选择器的第一个元素对象 切记 里面的选择器需要加符号 .box #nav
+        var firstbox = document.querySelector('.box');
+        console.log(firstbox);
+        var nav = document.querySelector('#nav');
+        console.log(nav);
+        var li = document.querySelector('li');
+        console.log(li);
+        // 3.querySelectorAll() 返回指定选择器的所有元素对象集合 
+        var allbox = document.querySelectorAll('.box');
+        console.log(allbox);
+        var lis1 = document.querySelectorAll('li');
+        console.log(lis1);
+    </script>
+
+    <script>
+        // 1.获取body 元素
+        var bodyEle = document.body;
+        console.log(bodyEle);
+        console.dir(bodyEle);
+        // 2.获取html元素
+        // var htmlEle = document.html; //undefined
+        var htmlEle = document.documentElement;
+        console.log(htmlEle);
+    </script>
+
+    <!-- <script src="./DOM文档对象的获取.js"></script> -->
+</body>
+</html>

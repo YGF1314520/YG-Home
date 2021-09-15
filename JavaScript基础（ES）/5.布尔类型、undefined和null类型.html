@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布尔类型、undefined和null类型</title>
+</head>
+
+<body>
+    <script>
+        //布尔类型只有两个值：true(真) 和 false(假)
+        var flag = true;   //1
+        var flag1 = false; //0
+        console.log(flag + 1); // true 参与运算相当于是1来看
+        console.log(flag1 + 1); // false 参与运算相当于是0来看
+
+        // 如果一个变量声明未赋值 就是undefined 未定义数据类型
+        var str;
+        console.log(str);
+        var variable = undefined;
+        console.log(variable + 'Mayongji'); //undefinedMayongji
+        console.log(variable + 1); //NaN undefined 和数字相加 最后的结果是 NaN
+
+        // null 空值
+        var space = null;
+        console.log(space + 'Mayongji'); //nullMayongji
+        console.log(space + 1); //1
+    </script>
+
+    <script>
+        /* Boolean对象的相关知识 */
+
+        /* 实例化一个Boolean对象 */
+        var bool = new Boolean(true);//默认是false
+        console.log(bool);
+
+        /* Boolean对象也是包装对象  会自动拆箱 */
+        // console.log(bool&&false);
+
+        /* 返回 Boolean 对象的原始值。 */
+        console.log(bool.valueOf());
+        /* 把布尔值转换为字符串，并返回结果。 */
+        console.log(bool.toString());
+    </script>
+</body>
+
+</html>

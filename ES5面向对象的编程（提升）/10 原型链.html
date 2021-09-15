@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>10 原型链</title>
+  </head>
+  <body>
+      <!-- 原型链： -->
+      <!-- 
+          1.构造函数Star<===通过Star.prototype(通过Star.prototype.constructor)==>原型对象prototype。
+          2.构造函数Star==new创建==>对象实例cxy。
+          3.对象实例cxy===cxy.__proto__==>原型对象prototype。【最终对象实例==通过对象原型cxy.__proto__.constructor==>构造函数Star】
+
+          4.原型对象Star.prototype==通过Star.prototype.__proto__==>Object原型对象prototype
+          5.Object原型对象prototype<==Object原型对象.constructor(Object.prototype)=>Object构造函数
+          6.Object原型对象prototype==Object原型对象prototype.__proto__=>null
+
+          总结：构造函数==通过prototype可以获取==>构造函数的原型对象，构造函数的原型对象可以通过__proto__原型获取===>Object原型对象prototype,
+          Object原型对象prototype==通过__proto__原型获取,的最终值为==>null。
+
+          途中，Object原型对象prototype==可以通过constructor获取==>Object的构造函数，同样Object的构造函数==也可以通过prototype获取===>Object原型对象prototype。
+       -->
+    <script>
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      Star.prototype.sing = function () {
+        console.log("敲代码");
+      };
+      var cxy = new Star("程序员", 22);
+    //   1.只要是对象就有__proto__原型，指向原型对象
+    console.log(Star.prototype);
+    console.log(Star.prototype.__proto__===Object.prototype);
+    // 2.我们Star原型对象里面的__proto__原型指向的是Object.prototype
+    console.log(Object.prototype.__proto__);
+    // 3.我们的Object.prototype原型对象里面的__proto__原型 指向为null
+    </script>
+  </body>
+</html>

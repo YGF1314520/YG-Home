@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18 offset与style的区别</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box" style="width: 200px;"></div>
+    <script>
+        // offset与style的区别
+        var box = document.querySelector('.box');
+        console.log(box.offsetWidth);
+        console.log(box.style.width);
+        // box.offsetWidth = '300px';
+        box.style.width ='300px';
+    </script>
+    <!-- 总结：获取元素的大小位置，推荐使用offsetWidth 更改元素值，使用style 更合适。 -->
+</body>
+</html>

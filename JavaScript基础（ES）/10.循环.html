@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>循环</title>
+</head>
+
+<body>
+    <script>
+        // 循环的目的：可以重复执行某些代码
+
+        /* 1.for循环 重复执行某些代码 通常跟计数有关系 */
+
+        // for(初始化变量;条件表达式;操作表达式【迭代】){
+        //     // 循环体
+        // }
+
+        // a:初始化变量 就是用var声明的一个普通变量，通常用于作为计时器使用
+        // b:条件表达式 就是用来决定每一次循环是否继续执行 就是终止的条件
+        // c:操作表达式【迭代】 是每次循环最后执行的代码 经常用于我们计数器变量
+        // for(var i =1;i<100;i++){
+        //     console.log("小马仔");
+        // }
+
+        // for循环可以执行相同的代码
+        // 控制用户输入的次数
+        // var num = prompt("请输入次数");
+        // for(var i =1;i<=num;i++){
+        //     console.log("小马仔");
+        // }
+
+        // for循环可以执行不同的代码
+        // for(var i = 1;i<=100;i++){
+        //     console.log("小马哥今年"+i+"岁了");
+        // }
+
+        // 循环与分支语句结合使用
+        // for(var i =1;i<=100;i++){
+        //     if (i==1) {
+        //         console.log("小马哥今年1岁了,他出生了");
+        //     }else if (i==100) {
+        //         console.log("小马哥今年100岁了,他死了");
+        //     }else{
+        //         console.log("小马哥今年"+i+"岁了");
+        //     }
+        // }
+
+        // for循环重复执行某些操作 
+        // 求1~100之间的整数累加和
+        // var num = 0;
+        // for(var i = 1;i<=100;i++){
+        //     // num = num+i;
+        //     num +=i;
+        // }
+        // console.log(num);
+
+        // 双重for循环
+
+        // for (外层的初始化变量; 外层的条件表达式; 外层的操作表达式) {
+        //     for (里层的初始化变量; 里层的条件表达式; 里层的操作表达式) {
+        //         // 执行语句;
+        //     }
+        // }
+
+        // A:我们可以把里面的循环看作是外层循环的语句
+        // B:外层循环循环一次 里面的循环执行全部
+        // for(var i =1;i<=3;i++){
+        //     console.log("这是外层循环第"+i+"次");
+        //     for(var j =1;j<=3;j++){
+        //         console.log("这是内层循环第"+j+"次");
+        //     }
+        // }
+
+
+        /*2. while循环 */
+        // while 当...的时候
+
+        // while(条件表达式){
+        //     // 循环体
+        // }
+
+        // 当条件表达式为true 则执行循环体 否则 退出循环
+
+        // var num = 1;
+        // while(num<=100){
+        //     console.log("你好吗??");
+        //     num++;
+        // }
+
+        // 里面也有初始化变量 计数器
+        // 里面也有操作表达式 完成计数器的更新 防止死循环
+
+        /*3. do while循环 */
+
+        // do{
+        //     // 循环体
+        // }while(条件表达式)
+
+        // 跟while不同的地方在于 do while 先执行一次循环体 在判断条件 如果条件表达式结果为真，则继续执行循环体，否则退出循环
+        // var i =1;
+        // do{
+        //     console.log('how are you??');
+        //     i++;
+        // }while(i<=100)
+
+        /* continue*/
+        // continue 关键字
+
+        // for(var i =1;i<=5;i++){
+        //     if (i==3) {
+        //         continue; //只要遇见 continue就跳出本次循环 直到跳到i++
+        //     }
+        //     console.log("我学习了"+i+"遍JavaScript了！");
+        // }
+
+        /* break */
+        // break 关键字 
+        // for (var i = 1; i <= 5; i++) {
+        //     if (i == 3) {
+        //         break; //退出整个循环
+        //     }
+        //     console.log("我学习了" + i + "遍JavaScript了！");
+        // }
+    </script>
+
+    <script>
+        /* 循环拓展知识 while循环*/
+
+        /* 循环结构： 重复执行一段代码
+                 1、初始值
+                 while(2、条件){
+                     3、执行代码
+                     4、迭代
+                } 
+        
+         
+                 1、初始值
+                do{
+                        3、执行的代码
+                        4、迭代
+        
+                }while(2、条件)
+        
+        
+                注意：先执行do中的代码 然后再判断条件
+                */
+
+        // var index = 0;
+        // while (index < 100) {
+        //     console.log(index);
+        //     index++;
+        // }
+
+
+        var index = 0;
+        do {
+            console.log(index);
+            index++;
+        } while (index < 100);
+
+    </script>
+
+    <script>
+        /* 循环拓展知识 for循环 */
+
+        /*
+       for循环和while 本质上 一样的   将初始值 判断条件 和迭代 放到一个专门的地方 结构更清晰
+        for(1、初始值;2、条件;3迭代){
+            4、执行的代码
+        }
+        执行： 1-->2(判断是否成立 成立就执行4)
+               4-->3
+               3-->2
+               2-->4 。。。。。 直到2不成立
+        一般当循环次数 不固定时我们使用while  次数固定时使用for循环
+
+        for循环的四个部分是可以省略的
+       */
+
+        // for(var index=0;index<100;index++){
+        //     console.log(index);
+        // }
+
+        // for(var i =0;;i++){
+
+        //     alert(i);
+        // }
+
+        // var i = 0;
+        // for (; i < 100; ) {
+        //     console.log(i);
+        //     i++
+        // }
+    </script>
+
+    <script>
+        /* 循环拓展知识 continue和break */
+        /*
+                continue:结束本次循环 直接进行下次循环
+                break: 结束当前循环
+            
+            */
+
+        //    for(var i=0;i<10;i++){
+        //        if(i==5)
+        //        continue
+        //        console.log(i);
+        //    }
+
+        //    for(var i =0;i<10;i++){
+        //        if(i==5)
+        //        break;
+        //        console.log(i);
+        //    }
+
+
+        // 使用break跳出双层循环
+
+        // 添加一个 标签 outer    然后  使用 break outer; 
+        outer: for (var i = 0; i < 10; i++) {
+            for (var j = 0; j < i; j++) {
+                if (j == 3) {
+                    break outer;
+                }
+                document.write("*&nbsp;&nbsp;");
+            }
+            document.write("<br>");
+        }
+
+    </script>
+</body>
+
+</html>

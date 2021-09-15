@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>22 jQuery元素大小</title>
+  <script src="./JQquery运行文件/jquery.min.js"></script>
+  <style>
+      div{
+          width: 200px;
+          height: 200px;
+          background-color: pink;
+          padding: 10px;
+          border: 15px solid red;
+          margin: 20px;
+      }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+     $(function () {
+        //  1.width() / height() 获取设置元素 width和height大小
+        console.log($("div").width());
+        // $("div").width(300);
+        // 2.innerWidth()/innerHeigh() 获取元素的 width和height大小 + padding 大小
+        console.log($("div").innerWidth());
+
+        // 3.outerWidth() / outerHeigh() 获取元素的 width和height大小 + padding + border 大小
+        console.log($("div").outerWidth());
+
+        // 4.outerWidth(true) / outerHeigh(true) 获取元素的 width和height大小 + padding + border + margin 大小
+        console.log($("div").outerWidth(true));
+
+     })
+  </script>
+</body>
+
+</html>

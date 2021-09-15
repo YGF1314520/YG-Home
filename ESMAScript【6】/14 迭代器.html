@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14 迭代器</title>
+</head>
+<body>
+    <script>
+        // 声明一个数组
+        const wuhu = ["关羽", "张飞", "赵云", "马超", "黄忠"];
+
+        // 使用 for...of 遍历数组【遍历属性值】
+        // for(let v of wuhu){
+        //     console.log(v);
+        // }
+        // for(let index in wuhu){【遍历索引】
+        //     console.log(index);
+        // }
+
+        let iterator = wuhu[Symbol.iterator]();
+
+        // 调用对象的next方法
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+        console.log(iterator.next());
+    </script>
+</body>
+</html>

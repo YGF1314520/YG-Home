@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+li{
+    float: left;
+    padding: 10px;
+    width: 100px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    position: relative;
+    cursor: pointer;
+    background-color: yellowgreen;
+    border-radius: 5px;
+}
+body{
+    text-align: center;
+}
+h4{
+    line-height: 50px;
+}
+.firstnav{
+    background-color: pink;
+    border: 1px solid #ccc;
+}
+.firstnav::before,.firstnav::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+.tabadd{
+    float: right;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    border: 3px solid #fff;
+    border-radius: 25%;
+    color: #fff;
+    cursor: pointer;
+}
+.icon{
+    display: inline-block;
+    padding: 5px;
+    line-height: 10px;
+    border: 1px solid #000;
+    font-size: 3px;
+    position: absolute;
+    border-radius: 25%;
+    background-color: red;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+.liactive{
+    color: #fff;
+    background-color: skyblue;
+}
+.tabscon{
+    height: 300px;
+    border: 1px solid #ccc;
+    border-top: none;
+    position: relative;
+    background-color: skyblue;
+}
+section{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: yellow;
+    padding: 10px;
+    text-align: left;
+    display: none;
+}
+.conactive{
+    display: block;
+}
+
+input{
+    width: 100%;
+}
+section input{
+    width: 100%;
+    height: 200px;
+}

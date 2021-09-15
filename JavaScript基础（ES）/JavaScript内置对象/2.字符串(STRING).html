@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串对象</title>
+</head>
+
+<body>
+    <script>
+        /* 基本包装类型 */
+        var str = 'caizheqing';
+        console.log(str.length);
+        // 对象 才有 属性和方法 复杂数据类型才有 属性和方法
+        // 简单的数据类型为什么会有length属性呢?
+        // 基本包装类型:就是把简单数据类型 包装成为了 复杂的数据类型
+        // (1)把简单数据类型包装为复杂数据类型
+        var temp = new String('caizheqing');
+        // (2)把临时变量的值 给 str
+        str = temp;
+        // (3) 销毁这个临时变量
+        temp = null;
+
+        /* 字符串的不可变性 */
+        // 值的是里面的值不可变，虽然看上去改变内容，但是地址变了，内存中新开辟了一个内存空间。
+        var str = 'caizheqing';
+        console.log(str);
+        str = 'mayongqi';
+        console.log(str);
+        // 因为我们字符串的不可变所以不要大量的拼接字符串
+        var str1 = '';
+        for (var i = 1; i <= 100; i++) {
+            str1 += i;
+        }
+        console.log(str1);
+
+        /* 字符串对象 */
+        // 字符串所有的方法，都不会修改字符串本身(字符串是不可变的),操作完成会返回一个新的字符串。
+        // 根据字符串对象返回位置 str1.indexOf('要查找的字符',[起始的位置])
+        var str1 = '马小姐逼牛！！小姐！';
+        console.log(str1.indexOf('姐'));
+        console.log(str1.indexOf('姐', 3)); //从索引号是 3的位置开始查找
+
+        /* 查找字符串"abcoefoxtyzzzopp"中所有的o出现的位置以及次数*/
+        // 核心算法：先查找第一个'o'出现的位置
+        // 然后 只要indexOf 返回的结果不是 -1 就继续往后查找
+        // 因为indexOf 只能查找到第一个,所以后面的查找,一定是当前索引加1从而继续查找
+        var str2 = 'oabcoefoxtyzzzopp';
+        var index = str2.indexOf('o');
+        var num = 0;
+        // console.log(index);
+        while (index !== -1) {
+            console.log(index);
+            num++;
+            index = str2.indexOf('o', index + 1);
+        }
+        console.log('o出现的次数是:' + num);
+
+        /* 根据位置返回字符 */
+        // 1.charAt(index) 根据位置返回字符
+        var str3 = 'mayongji';
+        console.log(str3.charAt(3));
+        // 遍历所有的字符
+        for (var i = 0; i < str3.length; i++) {
+            console.log(str3.charAt(i));
+        }
+        // 2.charCodeAt(index) 返回相应索引号的字符ASCII值 目的:判断用户按下了那个键
+        console.log(str3.charCodeAt(0)); //109
+        // 3.str[index] H5 新增的
+        console.log(str3[0]);
+
+        /* 统计出现次数最多的字符 */
+        var str4 = 'oabcoefoxtyzzzopp';
+        var o = {};
+        for (var i = 0; i < str4.length; i++) {
+            var chars = str4.charAt(i);//chars 是 字符串的每一个字符
+            if (o[chars]) { //o[chars] 得到的是属性值
+                o[chars]++;
+            } else {
+                o[chars] = 1;
+            }
+        }
+        console.log(o);
+        // 2.遍历对象
+        var max = 0;
+        var ch ='';
+        for(var k in o){
+            // k 得到是 属性名
+            // o[k]得到的是属性值
+            if (o[k]>max) {
+                max = o[k];
+                ch = k;
+            }
+        }
+        console.log(max);
+        console.log('最多的字母是'+ch);
+
+        /* 字符串操作方法 */
+        // 1.concat('字符串1','字符串2'...);
+        var str5 = 'mayongqi';
+        console.log(str5.concat('caizheqing'));
+        // 2.substr('截取的起始位置','截取几个字符');
+        var str6 = '马小姐逼牛！！小姐！';
+        console.log(str6.substr(2,2)); //第一个2 是索引号的2 从第几个开始 第二个2 是取几个字符
+
+        /* 1.替换字符 replace('被替换的字符','替换为的字符') 它只会替换第一个字符*/
+        var str7 = 'mayongqimayongqimayongqimayongqi';
+        console.log(str7.replace('m','c'));
+        // 有一个字符串 'oabcoefoxtyzzzopp' 要求把所有的o 替换为 *
+        var str8 = 'oabcoefoxtyzzzopp';
+        while(str8.indexOf('o')!==-1){
+            str8 = str8.replace('o','*');
+        }
+        console.log(str8);
+
+        /* 2.字符串转换为数组 split('分割符') */
+        var str9 = 'mayongqi,caizheqing,mayongqi';
+        console.log(str9.split(','));
+        var str10 = 'mayongqi&caizheqing&mayongqi';
+        console.log(str10.split('&'));
+        
+    </script>
+    <script src="./字符串String(API).js"></script>
+</body>
+
+</html>

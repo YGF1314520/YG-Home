@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单数据类型和复杂数据类型总结</title>
+</head>
+
+<body>
+    <script>
+        /* 简单数据类型 null 返回的是一个空的对象 object*/
+        var timer = null;
+        console.log(typeof timer);
+        // 如果有个变量我们以后打算存储为对象，暂时没想好放啥，这个时候就给null
+        // 1.简单数据类型 是存放在栈里面 里面直接开辟一个空间存放的是值
+        // 2.复杂数据类型 首先在栈里面存放地址 十六进制表示 然后这个地址指向堆里面的数据
+
+        /* 简单数据类型传参 */
+        function fn(a) {
+            a++;
+            console.log(a);
+        }
+        var x = 10;
+        fn(x);
+        console.log(x);
+
+        /* 复杂数据类型传参 */
+        function Person(name) {
+            this.name = name;
+        }
+
+        function f1(x) { //x=p
+            console.log(x.name); //2.这个输出什么? 蔡泽钦
+            x.name = '马永吉';
+            console.log(x.name);//3.这个输出什么? 马永吉
+        }
+        var p = new Person("蔡泽钦");
+        console.log(p.name); //1.这个输出什么? 蔡泽钦
+        f1(p);
+        console.log(p.name);//4.这个输出什么? 马永吉
+    </script>
+
+    <script>
+        /* 补充知识 值类型和引用类型 */
+
+        //number  string boolean null  undefined 值类型     复杂的数据结构 引用数据类型 function    [] {} 
+        //     值类型 是储存在栈中的  引用数据类型存放在堆空间
+        // 值类型赋值是直接将对应的值 传递过去  引用数据类型是将对应的地址传递过去
+
+        var a = 1;
+        var b = a; //b=1
+        console.log(a, b);
+        a = 2;
+        console.log(a, b);
+        var obj1 = {
+            name: "张三",
+            age: 18
+        }
+
+        var obj2 = obj1;//引用数据类型 赋值 传递是一个地址 属于浅拷贝
+        console.log(obj1.age, obj2.age);
+
+        obj1.age = 28;
+        console.log(obj1.age, obj2.age);
+        //    引用数据类型 直接使用== 比较 比较的是地址 
+        console.log(obj1 == obj2)
+    </script>
+
+    <script>
+        /* 深拷贝和浅拷贝 */
+
+
+        // 基本数类型 天生就是浅拷贝 
+        // 引用类型才有 深拷贝(复制对象中的每一个属性)和浅拷贝(复制的地址) 
+
+        var obj1 = {
+            name: "庄周",
+            book: "庄子"
+        }
+        var obj2 = obj1; // 浅拷贝 直接将 obj1的地址给了 obj2 
+
+        var obj3 = {}
+
+        for (key in obj1) {
+            obj3[key] = obj1[key];
+        }
+
+        //  dir 可以打印目录
+        console.dir(obj3);
+
+
+        obj1.name = "老子";
+        console.log(obj1.name, obj3.name);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>字符串型</title>
+</head>
+
+<body>
+    <script>
+        // 定义一个字符串
+        var call = '我叫"马永吉"，我是\b大帅哥';
+        console.log(call);
+
+        // 字符串中的转义字符 都是\开头 但是这些转义字符需要写道引用里面
+        /* \n 换行符    \\ 斜杠    \' 单引号   \" 双引号   \t tab缩进  \b 空格*/
+
+        // 弹出网页提示框
+        // alert("我们，\n生在红旗下，长在春风里，\n人民有信仰，国家有力量，民族有希望。\n目光所至皆为华夏，五星闪耀皆为信仰!");
+
+        // 检测字符串的长度 length
+        var str = 'my name is mayongji';
+        console.log(str.length); //19
+
+        // 字符串之间的拼接 +  只要有字符串类型和其他类型的拼接 最终的结果是字符串类型
+        console.log('马永吉' + '蔡泽钦');
+        console.log('马永吉' + 21);
+        console.log('马永吉' + true);
+
+        // 数字与数字是运算操作
+        console.log(21 + 21);
+
+        // 字符串与数字之间的拼接，是字符串
+        console.log('21' + 21);
+
+        // 注意：+ 数值相加，字符相连
+
+        // 加强版字符串拼接
+        // 变量和字符串相连的口诀：引引加加
+        var age = 18;
+        console.log('马永吉' + age + '岁');
+
+        /* 显示年龄案例 */
+        // 获取用户输入
+        // var ages = prompt('请输入您的年龄');
+        // var strage = '您今年'+ages+'岁';
+        // alert(strage);
+    </script>
+
+    <script>
+        /* String对象的相关知识 */
+
+        /* 创建一个字符串 */
+        var str1 = "hello";
+        console.log(str1);
+
+        /* 字符串模板 ` */
+        var str = `
+             hello Mr.Yuan;
+                 `;
+        console.log(str);
+
+        /* 字符串模板的拼接运算 */
+        var num = 0;
+        var str2 = `您好！第${++num}号召唤师`;
+        console.log(str2);
+
+        /* 可以嵌套双引号和单引号 里面可以输出语句 */
+        var str3 = `${console.log("Hello!")}`;
+
+        /* 字符串的拼接 */
+        var title = "标题";
+        var imgref = "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.xiazaizhijia.com%2Fwalls%2F20151203%2Fmiddle_6080601ff4a6c55.jpg&refer=http%3A%2F%2Fimg2.xiazaizhijia.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1625202656&t=872589b8b9544d2a6f8f0eb1cad4e5c5"
+        var html = `<div>
+        <h1>${title}</h1>
+        <img src =${imgref}>
+        </div>`
+        document.write(html);
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>操作DOM元素</title>
+    <style>
+        div,p{
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+            color: #fff;
+            background-color: pink;
+        }
+        .changebox{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+        }
+        .yuan{
+            width: 100px;
+            height: 100px;
+            font-size: 14px;
+        }
+
+        .change{
+            background-color: purple;
+            color: #fff;
+            font-size: 21px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示当前系统时间</button>
+    <div>某个时间</div>
+    <p>123</p>
+    <div id="box"></div>
+    <p id="textp">我是文字
+        <span>123</span>
+    </p>
+
+    <button id="xingkong">星空</button>
+    <button id="code">代码</button>
+    <img src="./images/桌面.jpg" alt="" title="星空">
+
+    <div class="changebox"></div>
+
+    <div class="yuan">哈哈，我会变大和移动</div>
+    <script>
+        // 当我们点击了按钮，div里面的文字会发生变化
+        // 1. 获取元素
+        var btn = document.querySelector('button');
+        var div = document.querySelector('div');
+        // 2.注册事件
+        btn.onclick = function () {
+            // div.innerText = '2021-7-26';
+            div.innerHTML = getDate();
+        }
+
+        function getDate() {
+            var date = new Date();
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var datas = date.getDate();
+            var arr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = date.getDay();
+            return '今天是：' + year + '年' + month + '月' + datas + '日 ' + arr[day];
+        }
+        // 我们元素可以不用添加事件
+        var p = document.querySelector('p');
+        p.innerHTML = getDate();
+    </script>
+
+    <script>
+        // innerText 和 innerHTML的区别
+        // 1. innerText 不识别html标签 非标准 去除空格和换行
+        var div1 = document.querySelector('#box');
+        // div1.innerText = '<strong>今天是:</strong>2021';
+        // 2. innerHTML 识别html标签 WSC标准 保留空格和换行
+        div1.innerHTML = '<strong>今天是:</strong> 2021';
+        // 这两个属性是可读写的 可以获取元素里面的内容
+        var textp = document.querySelector('#textp');
+        console.log(textp.innerText);
+        console.log(textp.innerHTML);
+    </script>
+
+    <script>
+        /* 修改元素属性 src*/
+        // 1.获取元素
+        var xk = document.getElementById('xingkong');
+        var code = document.getElementById('code');
+        var img = document.querySelector('img');
+        // 2.注册事件
+        code.onclick = function(){
+            img.src = './images/桌面.png';
+            img.title = '代码';
+        }
+        xk.onclick  =function(){
+            img.src= './images/桌面.jpg';
+            img.title = '星空';
+        }
+    </script>
+
+    <script>
+        /* 修改样式属性 */
+        // 1.获取元素
+        var divC = document.querySelector('.changebox');
+        // 2.注册事件 处理程序
+        divC.onclick = function(){
+            // divC.style 里面的属性 采取驼峰命名法
+            this.style.backgroundColor = 'purple';
+            this.style.width = '250px';
+        }
+    </script>
+
+    <script>
+        /* 通过className更改元素样式 */
+        // 1.使用element.style 获取修改元素样式 如果样式比较少 或者 功能简单的情况下使用
+        var yuan = document.querySelector('.yuan');
+        yuan.onclick = function(){
+            // this.style.backgroundColor='purple';
+            // this.style.color = '#fff';
+            // this.style.fontSize = '25px';
+            // this.style.marginTop = '100px';
+            // 让我们当前元素的类名改为了change
+
+            // 2.我们可以通过 修改元素的className更改元素的样式 适合样式较多或者功能复杂的情况
+            // 3.如果想要保留原先的类名. 我们可以这么做 多类名选择器
+            // this.className = 'change';
+            this.className = 'yuan change';
+        }
+    </script>
+
+</body>
+
+</html>

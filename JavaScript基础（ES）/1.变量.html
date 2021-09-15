@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>变量</title>
+</head>
+
+<body>
+    <script>
+        // 变量：在程序中申请的一块用来存放数据的内存空间。
+        // 变量的初始化：声明一个变量并赋值。
+        var age = 13;
+        console.log(age);
+
+        // 声明多个变量,中间用,隔开
+        var cname = '马永吉',
+            cage = 21,
+            csex = '男';
+
+        console.log(cname, cage, csex);
+
+        // 变量的重新赋值(更新变量)
+        var name = "马保国";
+        // console.log(name);
+        name = "马先生";
+        console.log(name);
+
+        /* 声明变量的三种特殊情况 */
+        // 1：只声明变量，并不赋值，就会输出undefined
+        var a;
+        console.log(a);
+
+        // 2：不声明，不赋值直接使用会报错
+        // 错误：bzh is not defined
+        // console.log(bzh);
+
+        // 注意：js在运行的时候，报错会阻塞程序的运行。
+
+        // 3.不声明，直接赋值使用(不提倡使用)
+        cc = 120;
+        console.log(cc);
+
+        /* 声明变量注意点
+       变量名： 数字 字母 下划线  不能以数字开头  $也是可以的
+               不能是关键字(系统使用的 比如 var if for ) 保留字(系统预留的关键字) 
+               长度不要超过255个字符
+               建议使用小驼峰名命法  xxxYyyyZzz   var myHeight  var myAddress*/
+
+
+        // 变量值交换
+        var temp; //定义一个临时变量为空
+        var MYQ = '马永吉';
+        var CZQ = '蔡泽钦';
+        // 进行交换操作【逻辑题】
+        temp = MYQ; //把右边的值赋值给左边的空变量
+        MYQ = CZQ;//把右边的值赋值给左边
+        CZQ = temp;//把右边的值赋值给左边
+        console.log(MYQ);
+        console.log(CZQ);
+
+        // 变量提升
+        // 变量提升  在js中 变量的声明会提前到最上方 但是 赋值不会提升
+        var address = "雨花台区";
+
+        /*  以上两行代码在js中的的实际顺序
+             var address;
+             console.log(address);
+             address="雨花台区";
+        */
+        console.log(address);
+    </script>
+</body>
+
+</html>

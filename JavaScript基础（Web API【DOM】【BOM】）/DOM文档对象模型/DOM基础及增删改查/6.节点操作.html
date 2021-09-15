@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>节点操作</title>
+</head>
+
+<body>
+    <!-- 节点的优点 -->
+    <div class="divbox">我是div</div>
+    <span>我是span</span>
+    <ul>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+        <li>我是li</li>
+    </ul>
+    <ol>
+        <li>我是li1</li>
+        <li>我是li2</li>
+        <li>我是li3</li>
+        <li>我是li4</li>
+        <li>我是li5</li>
+    </ol>
+    <div class="box">
+        <span class="erweima">x</span>
+    </div>
+
+    <button id="del">删除</button>
+    <ul class="delbox">
+        <li>马小姐</li>
+        <li>马先生</li>
+        <li>马女士</li>
+    </ul>
+
+    <ul class="copybox">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <script>
+        var box = document.querySelector('.box');
+        console.log(box);
+    </script>
+    <script>
+        // 1.父节点 parentNode
+        var erweima = document.querySelector('.erweima');
+        // var box = document.querySelector('.box');
+        // 得到的是离元素最近的父级节点(亲爸爸) 如果找不到父节点就返回为 null
+        console.log(erweima.parentNode);
+    </script>
+    <script>
+        // DOM 提供的方法(API) 获取
+        var ul = document.querySelector('ul');
+        var lis = document.querySelectorAll('li');
+        // 1.字节点 childNodes 所有的子节点 包含 元素节点 文本节点等等
+        console.log(ul.childNodes);
+        console.log(ul.childNodes[0].nodeType);
+        console.log(ul.childNodes[1].nodeType);
+        // 2.children 获取所有的子元素节点 也是我们实际开发常用的
+        console.log(ul.children);
+    </script>
+    <script>
+        var ol = document.querySelector('ol');
+        // 1.firstChild 第一个子节点 不管是文本节点还是元素节点
+        console.log(ol.firstChild);
+        console.log(ol.lastChild);
+        // 2.firstElementChild 返回第一个子元素节点 ie9才支持
+        console.log(ol.firstElementChild);
+        console.log(ol.lastElementChild);
+        // 3.实际开发的写法 既没有兼容性问题又返回第一个子元素
+        console.log(ol.children[0]);
+        console.log(ol.children[ol.children.length - 1]);
+    </script>
+
+    <script>
+        /* 兄弟节点 */
+        var divbox = document.querySelector('.divbox');
+        // nextSibling 下一个兄弟节点 包含元素节点或者 文本节点等等
+        console.log(divbox.nextSibling);
+        console.log(divbox.previousSibling);
+        // 2.nextElementSibling 得到下一个兄弟元素节点
+        console.log(divbox.nextElementSibling);
+        console.log(divbox.previousElementSibling);
+    </script>
+
+    <script>
+        /* 创建元素 */
+        // 1.创建节点元素节点
+        var li = document.createElement('li');
+        li.innerHTML = '我是新创建的元素';
+        // 2.添加节点 node.appendChild(child) node 父级 child 是子级 后面追加元素 类似于数组中的push
+        var ul = document.querySelector('ul');
+        ul.appendChild(li);
+        // 3.添加节点 node.insertBefore(child,指定元素);
+        var lili = document.createElement('li');
+        ul.insertBefore(lili, ul.children[0]);
+        // 4.我们想要页面添加一个新的元素：1.创建元素 2.添加元素
+    </script>
+
+    <script>
+        /* 删除节点 */
+        // 1.获取元素
+        var delbox = document.querySelector('.delbox');
+        var del = document.querySelector('#del');
+        // 2.删除元素 node.removeChild(child)
+        delbox.removeChild(delbox.children[0]);
+        // 3.点击按钮依次删除里面的孩子
+        del.onclick = function () {
+            if (delbox.children.length == 0) {
+                this.disabled = true;
+            } else {
+                delbox.removeChild(delbox.children[0]);
+            }
+        }
+    </script>
+
+    <script>
+        /* 复制节点 */
+        var copybox = document.querySelector('.copybox');
+        // 1.node.cloneNode(); 括号为空或者里面是false 浅拷贝 只复制标签不复制里面的内容
+        // 2.node.cloneNode(true); 括号为true 深拷贝 只复制标签不复制里面的内容
+        var lili2 = copybox.children[0].cloneNode(true);
+        copybox.appendChild(lili2);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>11 原型链成员查找规则</title>
+  </head>
+  <body>
+    <script>
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      Star.prototype.sing = function () {
+        console.log("敲代码");
+      };
+      Star.prototype.sex = "女";
+      // Object.prototype.sex = '男';
+      var cxy = new Star("程序员", 22);
+      cxy.sex = "男";
+      console.log(cxy.sex);
+      console.log(Object.prototype);
+      console.log(cxy);
+      console.log(Star.prototype);
+      console.log(cxy.toString());
+    </script>
+  </body>
+</html>

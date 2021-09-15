@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+
+<body>
+    <script>
+        /* 数组(Array):就是一组数据的集合 存储在单个变量下的优雅方式 */
+        // 1.利用new 创建数组
+        var arr = new Array(); //创建了一个数组
+        // 2.利用数组字面量创建数组[]
+        var arr1 = []; //创建了一个空的数组
+        var arr2 = [1, 2, '马永吉', true];
+        // 数组里面的数据一定要用逗号隔开
+        // 数组里面的数据，称为数组元素
+
+        // 获取数组元素 格式： 数组名[索引号] 索引号从0开始
+        console.log(arr2);
+        console.log(arr2[2]);
+        console.log(arr2[3]);
+
+        var arr3 = ["马永吉", "蔡泽钦", "小风车"];
+        console.log(arr3[0]);
+        console.log(arr3[1]);
+        console.log(arr3[2]);
+        console.log(arr3[3]); //因为没有这个元素 所以输出的结果是 undefined
+
+        /* 遍历数组 */
+        // 就是把数组元素从头到尾访问一次
+        var arr4 = ["马永吉", "蔡泽钦", "小风车"];
+        for (var i = 0; i < 3; i++) {
+            console.log(arr4[i]);
+        }
+
+        // 因为数组的索引号是从0开始的，所以i必须是从0开始 i<3
+        // 输出的时候 arr[i] i计数器当索引号来用
+
+        /* 数组长度 */
+        var arr5 = ["马永吉", "蔡泽钦", "小风车", "大狮子", "小老虎"];
+        console.log(arr5.length);
+        for (var i = 0; i < arr5.length; i++) {
+            console.log(arr5[i]);
+        }
+
+        /* 数组转换为字符串 */
+        var arr6 = ["马永吉", "蔡泽钦", "小风车", "大狮子", "小老虎"];
+        var str = "";
+        var sep = '&';
+        for (var i = 0; i < arr6.length; i++) {
+            str += arr6[i] + sep;
+        }
+        console.log(str);
+
+        /* 数组新增元素 */
+        // 1.新增数组元素 修改length长度
+        var arr7 = ["马永吉", "蔡泽钦", "小风车"];
+        console.log(arr7.length);
+        arr7.length = 5;
+        console.log(arr7);
+        console.log(arr7[3]); //undefined
+        console.log(arr7[4]); //undefined
+
+        // 2.新增数组元素 修改索引号
+        var arr8 = ["马永吉", "蔡泽钦", "小风车"];
+        arr8[3] = "大长腿";
+        console.log(arr8);
+        arr8[4] = "JK妹";
+        console.log(arr8);
+        arr8[0] = "马妹妹"; //这里是替换原来的数组元素
+        console.log(arr8);
+        arr8 = '有点东西哈！';
+        console.log(arr8); //不要给数组名直接赋值 否则里面的数组元素都没有了
+
+        /* 数组存放1~10 */
+        var arr9 = [];
+        for (var i = 0; i < 10; i++) {
+            arr9[i] = i + 1;
+        }
+        console.log(arr9);
+
+        /* 筛选数组 */
+        // 筛选大于10的数组元素，组成新数组
+        // 方法1
+        // var arr10 = [99, 88, 77, 66, 55, 44, 33, 2, 1, 0, 9];
+        // var newArr = [];
+        // var j = 0;
+        // for (var i = 0; i < arr10.length; i++) {
+        //     if (arr10[i] >= 10) {
+        //         newArr[j] = arr10[i];
+        //         j++;
+        //     }
+
+        // }
+        // console.log(newArr);
+
+        // 方法2
+        var arr10 = [99, 88, 77, 66, 55, 44, 33, 2, 1, 0, 9];
+        var newArr = [];
+        //  刚开始 newArr.length就是0
+        for (var i = 0; i < arr10.length; i++) {
+            if (arr10[i] >= 10) {
+                // 新数组的索引号应该是从0开始 依次递减
+                newArr[newArr.length] = arr10[i];
+            }
+
+        }
+        console.log(newArr);
+
+        /* 删除数组指定的元素(数组去重) */
+        var arr11 = [99, 0, 88, 77, 0, 66, 55, 0, 44, 33, 2, 0, 1, 0, 9];
+        var newArr1 = [];
+        for (var i = 0; i < arr11.length; i++) {
+            if (arr11[i] != 0) {
+                newArr1[newArr1.length] = arr11[i];
+            }
+        }
+        console.log(arr11);
+        console.log(newArr1);
+
+        /* 翻转数组 */
+        var arr12 = ["马永吉", "蔡泽钦", "小风车", "大狮子", "小老虎"];
+        var newArr2 = [];
+        for (var i = arr12.length - 1; i >= 0; i--) {
+            newArr2[newArr2.length] = arr12[i];
+        }
+        console.log(newArr2);
+
+        /* 数组排序 冒泡排序 */
+
+        // var arrA = [5, 4, 3, 2, 1];
+        var arrA = [4, 5, 3, 1, 2];
+        for (var i = 0; i <= arrA.length - 1; i++) { //外层循环管趟数
+            for (var j = 0; j < arrA.length - i - 1; j++) { //里面的循环管 每一趟的交换次数
+                // 内部交换两个变量的值 第一个值和后面一个数组元素相比较
+                if (arrA[j] < arrA[j + 1]) { //>从小到大排序 <从大到小排序
+                    var temp = arrA[j];
+                    arrA[j] = arrA[j + 1];
+                    arrA[j + 1] = temp;
+                }
+
+            }
+        }
+
+        console.log(arrA);
+    </script>
+
+    <script>
+        /* 数组补充知识 */
+
+        // 数组 储存一组数据类型相同的数据 
+
+        /**/
+
+        // 1 通过字面量的方式  语法糖 
+        var arr1 = [1, 2, 3, 4, 6, 4];
+        //   2 通过new 的方式 
+        var arr2 = new Array(1, 2, 3, 4);
+        // 3构造函数
+        var arr3 = Array("1", "2");
+        //   在定义数组时可以传参 一个字面量的格式的数组 
+        var arr4 = new Array([1, 2, 3, 4, 6, 4]);
+        //    定义数组时 可以指定数组长度
+        var arr5 = new Array(5); // 5表示该数组的长度
+
+        console.log(typeof (arr1), typeof (arr2), typeof (arr3));
+
+        // length 数组的长度 数组中的元素个数
+        console.log(arr1.length);
+
+        // 通过索引号可以访问 数组中的元素
+
+        console.log(arr1[0]);
+
+        // 给数组中的元素重新赋值
+        arr1[0] = 23;
+        console.log(arr1[0]);
+
+        // 给数组中添加一个新的元素
+        arr1[6] = 666;
+        console.log(arr1);
+        // 通过改版 数组的长度来实现删除元素
+        arr1.length = 3;
+        console.log(arr1);
+
+        //   --------------------------------------------------------------
+        //  使用for循环数组遍历
+
+        for (var i = 0; i < arr1.length; i++) {
+            console.log(arr1[i]);
+        }
+
+    </script>
+
+    <script>
+        /* 数组排序 冒泡排序和选择排序 */
+        // 2、 数组从小到大排列  [2,3,1,6,5] --> [1,2,3,5,6]   
+
+        //  冒泡排序是两两进行比较
+        //  
+        function bubble(arr) {
+            var temp;
+            // 外层循环的第一次循环结束 找出了 数组中的最大值 并放到数组的最后
+            //  外层循环的第二次循环结束 找到 倒数第二大的值 并放到数组的倒数第二
+
+            for (var i = 0; i < arr.length - 1; i++) {
+                for (var j = 0; j < arr.length - i - 1; j++) {
+                    //  相邻的两个值进行比较 如果后面的值小于前面的值 就进行数据的交换
+                    if (arr[j + 1] < arr[j]) {
+                        temp = arr[j];
+                        arr[j] = arr[j + 1];
+                        arr[j + 1] = temp;
+                    }
+                }
+            }
+            return arr;
+        }
+        //     var arr = [2,3,1,6,5];
+        //   console.log(bubble(arr))  ;
+
+        // 选择排序
+        function fastSort(arr) {
+            var minNum;//定义一个最小值
+            var index = 0;// 定义一个变量用于记录 最小值的索引
+            var temp = 0;
+            for (var j = 0; j < arr.length - 1; j++) {
+                minNum = arr[j];
+                // 内层循环用于找到 从 j到 arr.length 中间的最小值
+                for (var i = j; i < arr.length; i++) {
+
+                    if (minNum > arr[i]) {
+                        minNum = arr[i];
+                        index = i;
+                    }
+                }
+                //  交换 将最小值 放到  arr[j] 的位置     
+                temp = arr[j];
+                arr[j] = arr[index];
+                arr[index] = temp;
+            }
+            return arr;
+        }
+        var arr = [2, 3, 1, 6, 5];
+        console.log(fastSort(arr));
+    </script>
+
+    <script>
+        /* 数组补充知识 其他数组与深度递归 */
+
+        // 二维数组 ：数组中的元素本身又是一个数组
+
+        var arr = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9, 10, 11],
+        ]
+
+        // 访问数组中的元素
+        //    console.log(arr[1][2]); 
+        // 遍历
+        //   for(var i=0;i<arr.length;i++){
+        //       for(var j=0;j<arr[i].length;j++){
+        //           console.log(arr[i][j]);
+        //       }
+        //   }
+
+
+
+
+        //    三维数组 了解
+
+        var arr1 = [
+
+            [
+                [1, 2, 3],
+                [11, 22, 33]
+            ],
+            [
+                [4, 5, 6],
+                [44, 55, 66]
+            ],
+            [
+                [7, 8, 9],
+                [77, 88, 99]
+            ]
+
+        ]
+        // 深度递归
+        console.log(arr1.flat(3));
+
+
+    </script>
+</body>
+
+</html>

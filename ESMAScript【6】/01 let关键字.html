@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 let关键字</title>
+  </head>
+  <body>
+    <script>
+      // 声明变量
+      let a;
+      let b, c, d;
+      let e = 100;
+      let f = 521,
+        g = "iloveyou",
+        h = [];
+
+      // 1.变量不能重复声明
+      // let star = '程序员';
+      // let star = '程序媛';
+
+      // 2.块级作用域 全局，函数，eval
+      // if else while for
+      // {
+      //     let cxy = '程序员';
+      // }
+      // console.log(cxy);
+
+      // 3.不存在变量提升
+      // console.log(song);
+      // let song = '前端开发';
+
+      // 4.不影响作用域链
+      {
+        let cxy = "前端程序员";
+        function fn() {
+          console.log(cxy);
+        }
+        fn();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流程控制、三元表达式</title>
+</head>
+
+<body>
+    <script>
+        /* 分支语句 */
+
+        // 1.if 的语法结构 如果 if
+        // if(条件表达式){
+        //     // 执行语句
+        // }
+
+        // 2.if else 如果if else 否则
+        // if(条件表达式){
+        //     // 执行语句1
+        // }else{
+        //     // 执行语句2  
+        // }
+
+        // 3.if else if 多分支语句
+        // if (条件表达式1) {
+        //     // 语句1
+        // }else if (条件表达式2) {
+        //     // 语句2
+        // }else if (条件表达式3) {
+        //     // 语句3
+        // }else{
+        //     // 最后的语句
+        // }
+
+        /* 三元表达式 */
+        // 1.有三元运算符组成的式子我们称为三元表达式
+        // 2.语法结构
+        // 条件表达式?表达式1：表达式2
+        // 如果条件表达式为真 则返回 表达式1的值 如果表达式为假 则返回 表达式2的值
+        var num = 10;
+        var result = num > 5 ? "是" : "否";
+        console.log(result);
+
+        /* 三元表达式练习 添加"0" */
+        // var time = prompt("请输入一个数字");
+        // var result1 = time<10? '0'+time:time;
+        // alert(result1);
+
+        /* switch 语句 也是多分支语句 */
+
+        // switch(表达式){
+        //     case value1:
+        //         执行语句1;
+        //         break;
+        //     case value2:
+        //         执行语句2;
+        //         break;
+        //     case value3:
+        //         执行语句3;
+        //         break;
+        //     ...
+        //     default:
+        //         执行最后的语句
+        // }
+
+        // 利用我们表达式的值 和 case后面的选项相匹配，如果匹配成功,就执行case里面的语句
+        // 如果都没有匹配上，那么就执行default里面的语句
+
+        /* 注意：
+               1.表达式经常写成变量
+               2.当表达式中的值与case相匹配的时候 全等 必须是值和数据类型一致才可以
+               3.break如果当前的case里面没有break 则不会退出switch 是会继续执行下一个case的
+        */
+    </script>
+
+    <script>
+        /* 拓展：流程控制 */
+
+        /* 
+      流程控制:   
+                1、顺序结构  代码自上而下 执行 
+                2、分支结构  if else  switch case   符合条件才会执行 不符合就跳过
+                3、循环结构  for  while  do while   重复执行一段代码
+   */
+
+
+        /*
+           分支结构： 格式一  {} 代码块
+    
+                      if(条件){
+                                代码
+                            }
+    
+                      格式二 
+    
+                        if(条件){
+                            代码1
+                        }esle{
+                            代码2
+                        }
+                        条件成立 执行代码1  不成立 执行 代码2
+    
+                     格式三
+                        if(条件1){
+                            代码1
+                        } else if(条件2){
+                            代码2
+                        }  else if(条件3){
+                            代码3
+                        }
+                        ...
+                        esle{
+                        }
+    
+    
+                        // 条件一旦满足 后面的条件不会再继续判断 会直接跳过这个分支语句
+                              
+        */
+
+
+        //  if(false)
+        //   console.log("执行了");
+        //  console.log("第二句");
+
+        //  如果想要if 能控制 多行代码 就需要使用 {}
+
+        // if(7>3){
+        //     console.log("山不在高");
+        //     console.log("有仙则名");
+        //     console.log("水不在深");
+        //     console.log("有龙则灵");
+        // }
+
+        // var num1 = prompt("请输入一个数字") * 1;// 键盘输入的都是字符串类型的 *1 隐式转换为数值类型的
+        // var num2 = prompt("请输入一个数字") * 1;
+        // if (num1 >= num2) {
+        //     alert(num1 + ">=" + num2);
+        // } else {
+        //     alert(num1 + "<" + num2);
+        // }
+
+        var score = prompt("请输入你的成绩") * 1;
+        if (score >= 90) {
+            console.log("奖励BMW一辆");
+        } else if (score > 80) {
+            console.log("奖励一台笔记本");
+        } else if (score > 70) {
+            console.log("奖励一辆自行车");
+        } else if (score > 60) {
+            console.log("这次就算了吧");
+        } else {
+            console.log("我们去度假了 你看家吧");
+        }
+    </script>
+
+    <script>
+        /* 拓展 switch */
+
+        /* 格式  key 值 去和 case后面的 vaule进行比较 如果相等就执行
+     switch (key) {
+      case value:
+          
+          break;
+  
+      default:
+          break;
+
+
+          default: 默认的 如果以上的vaule值都不符合 就走默认的
+          break 可以终止switch 
+  }
+   */
+
+        var month = prompt("请输入月份") * 1;
+        switch (month) {
+            case 3:
+            case 4:
+            case 5:
+                alert("春天");
+                break;
+            case 6:
+            case 7:
+            case 8:
+                alert("夏天");
+                break;
+            case 9:
+            case 10:
+            case 11:
+                alert("秋天");
+                break;
+            case 12:
+            case 1:
+            case 2:
+                alert("冬天");
+            default:
+                alert("哥们你是地球村的？？？？");
+                break;
+        }
+    </script>
+</body>
+
+</html>

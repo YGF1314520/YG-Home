@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03 解构赋值</title>
+  </head>
+  <body>
+    <script>
+      // 解构赋值: ES6 允许按照一定模式从数组和对象中提取值，对变量进行赋值。
+      // 1.数组的解构
+    //   const F5 = ["关羽", "张飞", "赵云", "马超", "黄忠"];
+    //   let [guan, zhang, zhao, ma, huang] = F5;
+    //   console.log(guan);
+    //   console.log(zhang);
+    //   console.log(zhao);
+    //   console.log(ma);
+    //   console.log(huang);
+      // 2.对象的解构
+      const guan = {
+          name:'关羽',
+          age:'不详',
+          wusheng:function(){
+              console.log("单刀赴会,义薄云天");
+          }
+      }
+
+    //   let {name,age,wusheng} = guan;
+    //   console.log(name);
+    //   console.log(age);
+    //   console.log(wusheng);
+    //   wusheng();
+
+    let {wusheng} = guan;
+    wusheng();
+    </script>
+  </body>
+</html>

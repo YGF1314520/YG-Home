@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3.闭包案例（点击输出索引号）</title>
+  </head>
+  <body>
+    <ul class="nav">
+      <li>第1项</li>
+      <li>第2项</li>
+      <li>第3项</li>
+      <li>第4项</li>
+    </ul>
+    <script>
+      // 闭包应用-点击li输出当前li的索引号
+      // 1.我们可以利用动态添加属性的方式
+      var lis = document.querySelector(".nav").querySelectorAll("li");
+      for (var i = 0; i < lis.length; i++) {
+        lis[i].index = i;
+        lis[i].onclick = function () {
+          //   console.log(i);
+          console.log(this.index);
+        };
+      }
+      //   2.利用闭包的方式得到当前小li 的索引号
+      for (var i = 0; i < lis.length; i++) {
+        // 利用for循环创建了4个立即执行函数
+        // 立即执行函数也成为小闭包因为立即执行函数里面的任何一个函数都可以使用它的i这变量
+        (function (i) {
+          // console.log(i);
+        //   注意：内存泄漏问题，当i被点击后才会销毁，一直不点击，i一直不会被销毁。换句话说，本来该释放的内存，没有得到有效的释放，这就是内存泄漏。
+        // 闭包的优点：延长了变量的使用范围。
+          lis[i].onclick = function () {
+            console.log(i);
+          };
+        })(i);
+      }
+    </script>
+  </body>
+</html>

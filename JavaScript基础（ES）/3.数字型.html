@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字型</title>
+</head>
+
+<body>
+    <script>
+        var num = 10;//num 数字型
+        var PI = 3.14; //PI数字型
+
+        // 1.八进制 0~7 数字前面加0 表示8进制【0-7】
+        var num1 = 010;
+        console.log(num1); //010 八进制 转化为 10进制 就是 8
+        var num2 = 012;
+        console.log(num2); //10
+        // 2.十六进制 0~9 a~f #ffffff 数字的前面加0x 表示十六进制【0-9以及A-F】
+        var num3 = 0x9;
+        console.log(num3);
+        var num4 = 0xa;
+        console.log(num4);
+
+        /* 在js中，八进制前面加0,十六进制前面加0x */
+
+        //3.数字型的最大值
+        console.log(Number.MAX_VALUE);
+
+        // 4.数字型的最小值
+        console.log(Number.MIN_VALUE);
+
+        // 5.无穷大 Infinity
+        console.log(Number.MAX_VALUE * 2);
+
+        // 6.无穷小 -Infinity
+        console.log(-Number.MAX_VALUE * 2);
+
+        // 7.非数字(NaN)
+        console.log("蔡徐坤" - 100);
+
+        /* 非数字(NaN) 的使用 */
+        // isNaN这个方法用来判断是否为非数字，如果是返回false,如果不是返回true
+        console.log(isNaN(21));
+        console.log(isNaN("MYJ"));
+    </script>
+    <script>
+        /* Number对象的相关知识 */
+        
+        /* 实例化一个对象 */
+        var num1 = new Number(1);
+        console.log(num1);
+
+        /* 直接赋值创建对象 */
+        var num2 = 1;
+        // typeof 判断数据类型
+        console.log(typeof (num1), typeof (num2));//object和number
+
+        /* 当遇见算术运算符时 Number类型的对象会自动拆箱 变成基本数据类型 */
+        /* 自动拆箱(将 Number类型的对象自动转为 数字)和
+        自动装箱(将数字 转为 Number类型的对象)  */
+        /* 当number类型的基本数据类型 遇到调用方法时会自动装箱 变成 一个对象*/
+        console.log(num1 == num2);
+        console.log(num1 + 3);
+    </script>
+    <script src="./数值Number(API).js"></script>
+</body>
+
+</html>

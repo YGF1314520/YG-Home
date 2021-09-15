@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数</title>
+</head>
+
+<body>
+    <script>
+        /* 函数:就是封装了一段可以被重复执行调用的代码块 目的:让大量代码重复使用 */
+        // 1.声明函数
+
+        // function 函数名(){
+        //     // 函数体
+        // }
+        function sayHi() {
+            console.log('hi~~');
+        }
+
+        // (1)function 声明函数的关键字 全部小写
+        // (2)函数不调用自己不执行
+
+        // 2.调用函数
+
+        // 函数名();
+        sayHi();
+
+        /* 函数封装 */
+        // 计算1~100之间的累加和
+        function getSum() {
+            var sum = 0;
+            for (var i = 1; i <= 100; i++) {
+                sum += i;
+            }
+            console.log(sum);
+        }
+
+        getSum();
+        getSum();
+
+        /* 函数的参数 */
+        // 我们可以利用函数的参数实现函数重复不同的代码
+        // function 函数名(形参1,形参2,...){ //在声明函数的小括号里面是 形参 (形式上的参数)
+
+        // }
+        // 函数名(实参1,实参2,...); //在函数调用的小括号里面是实参(实际的参数)
+
+        // 形参和实参的执行过程
+        function cook(aru) { // 形参是接受实参的 aru ='北京烤鸭' 形参类似于一个变量
+            console.log(aru);
+        }
+
+        cook("北京烤鸭");
+        cook("麻婆豆腐");
+
+        // 函数的参数可以有,也可以没有个数不限
+        // 多个参数用逗号隔开
+
+        /* 函数形参实参个数匹配 */
+        function getSum1(num1, num2) {
+            console.log(num1 + num2);
+        }
+        // 1.如果实参的个数和形参的个数一致 则正常输出结果
+        getSum1(1, 2);
+        // 2.如果实参个数多于形参的个数 会取到形参的个数
+        getSum1(1, 2, 3);
+        // 3.如果实参的个数小于形参的个数 多余的形参定义为undefined 最终的结果是NaN
+        // 形参可以看做是不用声明的变量 num2 是一个变量但是没有接受值 结果就是undefined
+        getSum1(1); //NaN
+        // 建议:我们尽量让实参的个数和形参相匹配
+
+        /* 函数的返回值 */
+
+        // function 函数名(){
+        //     return 需要返回的结果;
+        // }
+        // 函数名();
+
+        // (1)函数只是实现某种功能.最终的结果需要返回给函数的调用者 函数名() 通过return 实现的
+        // (2)只要函数遇到return 就把后面的结果 返回给函数的调用者 函数名() = return后面的结果
+
+        function getResult() {
+            return 666;
+        }
+        getResult(); //getResult()=666;
+        console.log(getResult());
+
+        function cook1(aru1) {
+            return aru1;
+        }
+        console.log(cook1('老婆饼里没老婆'));
+
+        // 求任意两个数的和
+        function getSum2(num3, num4) {
+            return num3 + num4;
+        }
+        console.log(getSum2(1, 2));
+
+        /* 利用函数求两个数的最大值 */
+        function getMax(num5, num6) {
+            // if (num5>num6) {
+            //     return num5;
+            // }else{
+            //     return num6;
+            // }
+            return num5 > num6 ? num5 : num6;
+        }
+        console.log(getMax(1, 3));
+        console.log(getMax(11, 3));
+
+        /* 利用函数求数组中的最大值 */
+        // var arr = [99, 88, 33, 44, 66, 55, 77, 22, 11];
+        function getArrMax(arr) { //arr 接受一个数组 arr = [99, 88, 33, 44, 66, 55, 77, 22, 11];
+            var max = arr[0];
+            for (var i = 0; i <= arr.length; i++) {
+                if (arr[i] > max) {
+                    max = arr[i];
+                }
+
+            }
+            return max
+        }
+        // getArrMax([99, 88, 33, 44, 66, 55, 77, 22, 11]); //实参是一个数组送过去
+        //在实际开发里面,我们经常使用一个变量来接受 函数的返回结果 使用更简单
+        // var res = getArrMax([99, 88, 33, 44, 66, 55, 77, 22, 11]);
+        var res = getArrMax([11, 33, 55, 99, 77, 44]);
+        console.log(res);
+
+        /* 函数返回值注意事项*/
+        // 1. return 终止函数
+        function getSum3(numa, numb) {
+            return numa + numb;
+            alert("我是不会执行的哦!");
+        }
+        console.log(getSum3(1, 2));
+
+        // 2.return 只能返回一个值
+        function fn(numi, numj) {
+            return numi, numj;  //返回结果是最后一个值
+        }
+        console.log(fn(1, 2));
+
+        // 3.求任意两个数的 加减乘除结果
+        function getResult2(num1a, num1b) {
+            return [num1a + num1b, num1a - num1b, num1a * num1b, num1a / num1b];
+        }
+        var re = getResult2(1, 2); //返回的是一个数组
+        console.log(re);
+
+        // 4.函数如果有return 则返回的是 return 后面的值,如果函数没有return 则返回undefined
+
+        function fun1() {
+            return 666;
+        }
+        console.log(fun1()); //返回666
+
+        function fun2() {
+
+        }
+        console.log(fun2()); //函数返回的结果是undefined
+
+        /* arguments 的使用 */
+        // 只有函数才有arguments对象,而且是每个函数都内置好了这个arguments
+        function fn1() {
+            // console.log(arguments); //里面存储了所有传递过来的实参
+            // console.log(arguments.length);
+            // console.log(arguments[2]);
+            // 我们可以按照数组的方式遍历arguments
+            for (var i = 0; i < arguments.length; i++) {
+                console.log(arguments[i]);
+            }
+        }
+        fn1(1, 2, 3);
+        fn1(1, 2, 3, 4, 5);
+        // 伪数组 并不是真正意义上的数组
+        // 1.具有数组的length属性
+        // 2.按照索引方式进行存储的
+        // 3.它没有真正数组的一些方法 pop() push()等等
+
+        /* 利用函数求任意个数的最大值 */
+        function getMax2() {
+            var max2 = arguments[0];
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i] > max2) {
+                    max2 = arguments[i];
+                }
+            }
+            return max2;
+        }
+        console.log(getMax2(1, 2, 3));
+        console.log(getMax2(1, 2, 3, 4, 5));
+        console.log(getMax2(11, 2, 34, 444, 5, 100));
+
+        /* 函数调用 */
+
+        // function fna(){
+        //     console.log("我是函数fna");
+        //     fnb();
+        // }
+        // function fnb(){
+        //     console.log("我是函数fnb,我是被调用的！");
+        // }
+        // fna();
+
+        function fnA() {
+            console.log(111);
+            fnB();
+            console.log('fnA');
+
+        }
+
+        function fnB() {
+            console.log(222);
+            console.log('fnB');
+        }
+        fnA();
+
+        /* 函数的声明方式 */
+        // 1.利用关键字自定义函数(命名函数)
+        // function fn(){
+
+        // }
+        // fn();
+
+        // 2.函数表达式(匿名函数)
+        // var 变量名 = function(){};
+        var fun = function () {
+            console.log('我是函数表达式！');
+        }
+        fun();
+
+        // (1)fun是变量名 不是函数名
+        // (2)函数表达式声明方式跟声明变量差不多，只不过变量里面存的是值 而 函数表达式里面存的是函数
+        // (3)函数表达式也可以进行传递参数
+    </script>
+    <script>
+        /* 函数表达式 */
+        // function add(a,b){
+        //     return a+b;
+        // }
+
+        // 函数表达式 定义一个变量 然后给这个变量赋值一个函数
+        // console.log(add); // add的声明会提前 
+        var add = function (a, b) {
+            return a + b;
+        }
+
+        console.log(add(2, 3))
+    </script>
+    <script>
+        /* try catch捕获错误 */
+
+        /* 为了避免 程序出现错误 而引起整个程序的崩溃 我们可以使用错误捕获
+        */
+
+
+        //    num++;
+
+        //    console.log("我能执行吗");
+
+        // try执行可能出现错误的代码
+        try {
+            // var num=1;
+            num++;
+            // catch当 try中的代码出现错误时会捕获
+        } catch (error) {
+            console.log(error);
+        } finally {// 无论try中的代码是正确的还是错误的 都会执行 finally中的代码
+            console.log("finally")
+        }
+        console.log("我能执行吗");
+        function add(num1, num2) {
+            try {
+                var res = num1 + num2;
+
+            } catch (err) {
+            }
+            return res;
+        }
+    </script>
+    <script>
+        /* 函数补充知识 */
+
+        /*
+       函数： 将一些代码(为了完成一些特定的功能) 封装在一起 
+
+       完整的函数的格式   function  函数名(形参1，形参3...){
+                                     代码
+
+                                     return  返回值
+                                }
+
+                             函数不会自动执行 需要手动调用 
+                             函数调用： 函数名(实参1，实参2...);
+                           // 如果定义了形参 但是不传递实参进去 形参默认值就是 undefined;
+                           //  如果没加 return  默认返回的是 undefined 
+                            // 如果函数中有return的话 函数执行到return会立即停止
+                             
+    */
+        // 定义一个求两个数字的和的函数
+        function add(a, b) {
+            var sum = 0;
+            sum = a + b;
+            return sum;
+        }
+        var sum = add(2, 3);
+
+        console.log(sum);
+
+        console.log(add(70, 80));
+
+        //  不带形参和返回值的函数
+        // function print(){
+        //     console.log("Hello World!!!");
+        // }
+
+        // print();
+        // print();
+
+
+        function print(arg) {
+            console.log(arg);
+            // return;
+            // console.log(12323332);
+        }
+        print("你好");
+        print("静夜思");
+        // 如果定义了形参 但是不传递实参进去 形参默认值就是 undefined;
+        //  如果没加 return  默认返回的是 undefined
+
+        // 如果函数中有return的话 函数执行到return会立即停止
+        print();
+
+        var res = print("今天开始学习函数了 好激动");
+
+        console.log(res);
+
+    </script>
+
+    <script>
+        /* 函数的声明提前 */
+
+        // print1("hello");
+        // function print1(arg) {
+        //     console.log(arg);
+        // }
+        // 以上的代码在执行时 正确的位置
+
+        //    function print1(arg){
+        //        console.log(arg);
+        //    }
+        //    print1("hello");
+
+
+        //  变量提前会在 函数前面
+        add();
+        var num = 1;
+        function add() {
+            console.log(num);
+        }
+
+        /*
+          var num;
+          function add(){
+              console.log(num);
+          }
+          add();
+          num=1;
+        */
+    </script>
+
+    <script>
+        /*  arguments对象 补充知识 */
+
+        //   arguments对象 是系统内置的 专门用于储存函数传递的参数
+
+        function add() {
+            console.log(arguments);
+            // 我们可以通过索引号来获取到 传递的实参
+
+            // console.log(arguments[0],arguments[1]);
+
+            var sum = 0;
+            //    arguments.length 表示的参数的个数
+            for (var i = 0; i < arguments.length; i++) {
+                sum += arguments[i];
+            }
+            return sum;
+
+        }
+
+        console.log(add(1, 2, 3, 4, 5, 6, 7, 8, 9));
+    </script>
+    <script>
+        /* callee */
+        // 打印 1-10 要求不能使用循环
+
+
+        function printNum(n) {
+            if (n <= 10) {
+                console.log(n);
+                n++;
+
+                // console.log( arguments.callee) 相当于 printNum 本身
+                // arguments.callee(n);
+                printNum(n);
+            }
+
+        }
+        printNum(1);
+    </script>
+
+    <script>
+        /* 函数之间相互调用 */
+
+        function a() {
+            console.log("a");
+        }
+        function b() {
+            console.log("b");
+            // 在函数b中调用函数a 
+            a();
+        }
+        b();
+
+        // 举例
+
+
+        function add(num1, num2) {
+            return num1 + num2;
+        }
+
+        function aver(num1, num2) {
+
+            return add(num1, num2) / 2;
+
+        }
+
+        console.log(aver(3, 6));
+
+        //  如果函数 最后返回值是调用函数本身 我们称为递归函数 注意一定要避免死循环 一定要有明确的退出条件
+
+        // 判断 斐波那契数的第 20位是多少 
+
+        //  1 1 2 3 5 8 13   
+        //   第 n的黄金数  = 第n-1位的黄金数 + 第n-2位的黄金数  
+
+        function goldNum(n) {
+            if (n == 1 || n == 2) {
+                return 1;
+            }
+            return goldNum(n - 1) + goldNum(n - 2);
+        }
+    /*
+                               g(5)           g(4 )            +        g(3)
+                                             g(3) +g(2);               g(2)+g(1) =1+1;
+                                             g(2)+g(1)+1 = 3   +         2
+                            */
+    //   console.time("timer");
+    //  console.log(goldNum(40));
+    //  console.timeEnd("timer");
+    </script>
+
+    <script>
+        /* 函数补充知识 【进阶】*/
+
+        // 定义函数
+        function name(a, b) {
+            // 这里的代码反复值得
+            // 1: arguments 接受所有的实参
+            console.log(arguments);
+            // 2: 形参作用接受实参
+
+            // 3: return 返回值 作用：将函数内部运算结果输出到函数外部
+            return '1'
+        }
+
+        //  xxx()  表示函数执行。
+        name(1, 2)
+        name()
+
+
+        // 回调函数: 当一个函数作为另一个函数实参传入时候
+
+        function $(callback, aa) {
+            if (typeof callback === 'function') {
+                callback();
+                aa();
+            }
+        }
+
+
+        $(function () {
+            console.log('$执行了');
+        }, function () {
+            console.log('等第一个执行挖鼻后执行执行这个函数');
+        })
+
+        // 手写 setTimeOut
+
+        // setTimeout(function (a, b) {
+        //     console.log('我执行了');
+        //     console.log('参数a', a);
+        //     console.log(b);
+        // }, 2000, 'dddd', 123);
+
+        // 1:求当前时间的时间戳 
+        var now = new Date().getTime();
+        // 2:求未来时间的时间戳 
+
+        function setTimeZA(callback, time, a) {
+            // 获取计时器执行时间。
+            var now = new Date().getTime();
+            // 求 回调函数 将来在什么时间执行
+            var out = now + time;
+            // 如何实时监听时间的变化
+            var timer = setInterval(function () {
+                var timeout = new Date().getTime();
+                // 用监听的时间，与 程序将来执行的时间进行比较。
+                if (timeout >= out) {
+                    clearInterval(timer)
+                    // 当时间到了2000后，让 callback执行
+                    callback(a);
+                }
+            }, 0)
+        }
+        setTimeZA(function (a) {
+            console.log('=================================');
+            console.log('zhangao');
+            console.log(a);
+        }, 500, 'dfsadf')
+    </script>
+</body>
+
+</html>

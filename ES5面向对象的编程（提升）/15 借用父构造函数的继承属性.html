@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 借用父构造函数的继承属性</title>
+</head>
+<body>
+    <!-- 总结：父构造函数中的原型对象上的方法，子构造函数可以通过父构造函数的实例对象获取得到 -->
+    <!-- 
+        1.父构造函数==通过prototype==>父原型对象prototype==>创建一个方法
+        2.子构造函数==通过prototype==>子原型对象prototype==>父实例对象===>父原型对象prototype上的方法
+        3.父构造函数==new创造=>父实例对象==通过__proto__原型==>父原型对象prototype
+     -->
+    <script>
+        //借用父构造函数继承属性
+        // 1.父构造函数
+        function Father(uname,age){
+            // this指向父构造函数的对象实例
+            this.uname = uname;
+            this.age = age;
+        }
+        Father.prototype.money = function(){
+            console.log(10000);
+        }
+        // 2.子构造函数
+        function Son(uname,age,score){
+            // this 指向子构造函数的对象实例
+            Father.call(this,uname,age);
+            this.score = score;
+        }
+        // Son.prototype = Father.prototype; 这样直接赋值会有问题，如果修改了子原型对象，父原型对象也会跟着一起变化
+        Son.prototype = new Father();
+        // 如果利用对象的形式修改了原型对象，别忘了利用constructor 指回原来的构造函数
+        Son.prototype.constructor = Son;
+        // 这个是子构造函数专门的方法
+        Son.prototype.exam = function(){
+            console.log('要毕业了');
+        }
+        var son = new Son('程序员',22,100);
+        console.log(son);
+        console.log(Father.prototype);
+        console.log(Son.prototype.constructor);
+    </script>
+</body>
+</html>

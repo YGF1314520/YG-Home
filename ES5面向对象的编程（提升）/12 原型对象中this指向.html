@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>12 原型对象中this指向</title>
+  </head>
+  <body>
+    <script>
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      var that;
+      Star.prototype.sing = function () {
+        console.log("敲代码");
+        that = this;
+      };
+      var cxy = new Star("程序员", 22);
+
+    // 1.在构造函数中，里面this指向的是对象实例cxy
+    cxy.sing();
+    console.log(that===cxy);
+    // 2.原型对象函数里面的this 指向的是 实例对象 cxy
+    </script>
+  </body>
+</html>

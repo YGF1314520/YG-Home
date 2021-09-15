@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>04 模板字符串</title>
+  </head>
+  <body>
+    <script>
+      // ES6 引入新的声明字符串的方式 [``] '' ""
+      // 1.声明
+      // let str = `我是模板字符串`;
+      // console.log(str,typeof str);
+
+      // 2.内容中可以直接出现换行符
+      let str = `<ul>
+                    <li>第1项</li>
+                    <li>第2项</li>
+                    <li>第3项</li>
+                    <li>第4项</li>
+                 </ul>`;
+    // console.log(str);
+        //3.变量拼接
+        let lovest = '程序员';
+        let out = `${lovest}现在进行前端开发了！！`;
+        console.log(out);
+    </script>
+  </body>
+</html>

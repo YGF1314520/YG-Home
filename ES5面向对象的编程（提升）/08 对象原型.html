@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>08 对象原型</title>
+</head>
+<body>
+    <!-- 总结：__proto__对象原型和原型对象prototype是等价的 -->
+    <!-- 
+        1.定义一个构造函数 ===在构造函数内部存在一个===> 原型对象prototype
+        2.创建一个对象实例 ===可以通过__proto__对象原型指向===> 原型对象prototype
+        3.原型对象prototype上面存放了一些公共的方法，创建的对象实例可以通过__proto__对象原型对这些方法进行调用。
+        简单来说：原型对象prototype指的是对象的原型。
+                  __proto__对象原型指的是对象的查找指向。
+     -->
+    <script>
+        function Star(uname,age){
+            this.uname = uname;
+            this.age = age;
+        }
+        Star.prototype.sing = function(){
+            console.log("敲代码");
+        }
+        var cxy = new Star('程序员',22);
+        var cxys = new Star('程序媛',18);
+        cxy.sing();
+        console.log(cxy); //对象身上系统自己添加一个 __proto__ 指向我们构造函数的原型对象 prototype
+        console.log(cxy.__proto__ === Star.prototype);
+        // 方法的查找规则:首先先看cxy 对象身上是否有 sing方法,如果有就执行这个对象上的sing
+        // 如果没有sing 这个方法，因为有__proto__的存在，就去构造函数原型对象prototype身上去查找sing这个方法
+    </script>
+</body>
+</html>

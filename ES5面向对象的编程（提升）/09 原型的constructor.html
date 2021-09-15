@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>09 原型的constructor</title>
+  </head>
+  <body>
+      <!-- 总结：构造函数、实例、原型对象关系 -->
+      <!-- 
+          1.每一个构造函数内部都有一个原型对象。
+          2.构造函数Star===通过Star.prototype====>原型对象prototype
+          3.构造函数Star<===通过Star.prototype.constructor====原型对象prototype
+
+          4.通过构造函数创建了一个对象实例。
+          5.构造函数Star===>对象实例cxy
+          6.对象实例cxy==通过对象原型__proto__==>原型对象prototype===>通过Star.prototype.constructor====>构造函数Star
+          最终，对象实例cxy==通过对象原型cxy.__proto__.constructor====>构造函数Star
+       -->
+    <script>
+      function Star(uname, age) {
+        this.uname = uname;
+        this.age = age;
+      }
+      // 很多情况下，我们需要手动的利用constructor 这个属性指回原来的构造函数
+      // Star.prototype.sing = function(){
+      //     console.log("敲代码");
+      // };
+      // Star.prototype.movie = function(){
+      //     console.log("刷网课");
+      // }
+      Star.prototype = {
+        //   如果我们修改了原来的原型对象，给原型对象赋值的是一个对象，则必须手动利用constructor指回原来的构造函数
+        constructor:Star,
+        sing: function () {
+          console.log("敲代码");
+        },
+        movie: function () {
+          console.log("刷网课");
+        },
+      };
+      var cxy = new Star("程序员", 22);
+      var cxys = new Star("程序媛", 18);
+      console.log(Star.prototype);
+      console.log(cxy.__proto__);
+      console.log(Star.prototype.constructor);
+      console.log(cxy.__proto__.constructor);
+    </script>
+  </body>
+</html>
